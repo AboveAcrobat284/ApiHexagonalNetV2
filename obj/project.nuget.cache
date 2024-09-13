@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EsgxqdWdn14=",
+  "dgSpecHash": "1geVeJD+PLQ=",
   "success": true,
-  "projectFilePath": "/home/cgume/ApiHexagonalNet/ApiHexagonalNet.csproj",
+  "projectFilePath": "/home/cgume/ApiHexagonalNetV2/ApiHexagonalNet.csproj",
   "expectedPackageFiles": [
     "/home/cgume/.nuget/packages/awssdk.core/3.7.100.14/awssdk.core.3.7.100.14.nupkg.sha512",
     "/home/cgume/.nuget/packages/awssdk.securitytoken/3.7.100.14/awssdk.securitytoken.3.7.100.14.nupkg.sha512",

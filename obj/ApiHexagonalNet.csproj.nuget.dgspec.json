@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/cgume/ApiHexagonalNet/ApiHexagonalNet.csproj": {}
+    "/home/cgume/ApiHexagonalNetV2/ApiHexagonalNet.csproj": {}
   },
   "projects": {
-    "/home/cgume/ApiHexagonalNet/ApiHexagonalNet.csproj": {
+    "/home/cgume/ApiHexagonalNetV2/ApiHexagonalNet.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/cgume/ApiHexagonalNet/ApiHexagonalNet.csproj",
+        "projectUniqueName": "/home/cgume/ApiHexagonalNetV2/ApiHexagonalNet.csproj",
         "projectName": "ApiHexagonalNet",
-        "projectPath": "/home/cgume/ApiHexagonalNet/ApiHexagonalNet.csproj",
+        "projectPath": "/home/cgume/ApiHexagonalNetV2/ApiHexagonalNet.csproj",
         "packagesPath": "/home/cgume/.nuget/packages/",
-        "outputPath": "/home/cgume/ApiHexagonalNet/obj/",
+        "outputPath": "/home/cgume/ApiHexagonalNetV2/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/cgume/.nuget/NuGet/NuGet.Config"

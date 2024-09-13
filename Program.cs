@@ -4,9 +4,8 @@ using MongoDB.Driver;
 using ApiHexagonalNet.Domain.Settings;
 using ApiHexagonalNet.Application.Ports;
 using ApiHexagonalNet.Adapters.Out.Persistence.MongoDB;
-using ApiHexagonalNet.Application.Services; // Asegúrate de tener este using correcto
+using ApiHexagonalNet.Application.Services;
 using Microsoft.Extensions.Logging;
-
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,11 +31,14 @@ builder.Services.AddSingleton<IMongoClient>(s =>
 });
 
 // Registrar servicios de repositorio
-builder.Services.AddScoped<IFlowerRepository, MongoDBFlowerRepository>();
-builder.Services.AddScoped<IOrderRepository, MongoDBOrderRepository>();
-builder.Services.AddScoped<IFlowerService, FlowerService>();
-builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IUserRepository, MongoDBUserRepository>();
+builder.Services.AddScoped<IStoreRepository, MongoDBStoreRepository>();
+builder.Services.AddScoped<IEmployeeRepository, MongoDBEmployeeRepository>();
 
+// Registrar servicios de aplicación
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IStoreService, StoreService>();
+builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 
 // Agregar servicios al contenedor
 builder.Services.AddControllers();
