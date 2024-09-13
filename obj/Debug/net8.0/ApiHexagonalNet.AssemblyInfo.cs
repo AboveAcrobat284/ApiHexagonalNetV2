@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ApiHexagonalNet")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2e46c7a305621a2957f7953c4d4da1adbfeba165")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+70c24ff4e5c5f4e60175950744cea41430ded332")]
 [assembly: System.Reflection.AssemblyProductAttribute("ApiHexagonalNet")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ApiHexagonalNet")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

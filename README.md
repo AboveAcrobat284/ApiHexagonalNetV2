@@ -1,174 +1,157 @@
 
-# ApiHexagonalNet
+# ApiHexagonalNetV2
 
-Este proyecto es una API RESTful construida con .NET Core utilizando una arquitectura hexagonal. La API permite manejar entidades de flores y pedidos para una floristería.
+Este es un proyecto de API basado en arquitectura hexagonal utilizando .NET y MongoDB Atlas. La API proporciona endpoints para manejar usuarios, tiendas y empleados.
 
-## Requisitos Previos
+## Clonar el Repositorio
 
-- .NET SDK 6.0 o superior
-- MongoDB (puedes utilizar MongoDB Atlas para una base de datos en la nube)
+Para clonar este repositorio, asegúrate de tener [Git](https://git-scm.com/) instalado. Ejecuta el siguiente comando en tu terminal:
 
-## Instalación
+```bash
+git clone https://github.com/AboveAcrobat284/ApiHexagonalNetV2.git
+```
 
-1. Clona el repositorio:
+## Configuración del Entorno
 
-   ```bash
-   git clone https://github.com/AboveAcrobat284/ApiHexagonalNet.git
-   cd ApiHexagonalNet
-   ```
+### Requisitos Previos
 
-2. Restaura las dependencias:
+Asegúrate de tener instalado:
 
-   ```bash
-   dotnet restore
-   ```
+- [.NET 6 SDK o superior](https://dotnet.microsoft.com/download/dotnet/6.0)
+- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) (o una instancia local de MongoDB)
+- [Visual Studio 2022](https://visualstudio.microsoft.com/) o [Visual Studio Code](https://code.visualstudio.com/) con la extensión de C#
 
-3. Configura la conexión a MongoDB:
+### Configurar la Conexión a MongoDB
 
-   Modifica el archivo `appsettings.json` con tu cadena de conexión de MongoDB:
+1. Renombra el archivo `appsettings.Development.json.example` a `appsettings.Development.json`.
+2. Edita el archivo `appsettings.Development.json` y configura tu cadena de conexión de MongoDB:
 
-   ```json
-   {
-     "MongoDBSettings": {
-       "ConnectionString": "mongodb://localhost:27017",
-       "DatabaseName": "FloristaDb"
-     }
-   }
-   ```
+```json
+{
+  "MongoDBSettings": {
+    "ConnectionString": "TU_MONGO_DB_CONNECTION_STRING",
+    "DatabaseName": "ApiHexagonalNetV2"
+  }
+}
+```
 
-4. Compila el proyecto:
+Reemplaza `"TU_MONGO_DB_CONNECTION_STRING"` con tu cadena de conexión real de MongoDB Atlas.
+
+## Ejecutar la API
+
+Para ejecutar la API, sigue estos pasos:
+
+1. Abre tu terminal o consola en la raíz del proyecto.
+
+2. Restaura las dependencias del proyecto y compílalo:
 
    ```bash
    dotnet build
    ```
 
-5. Ejecuta el proyecto:
+3. Ejecuta la aplicación:
 
    ```bash
    dotnet run
    ```
 
-## Endpoints de la API
+La API debería iniciarse y estar disponible en `http://localhost:5020` u otro puerto especificado.
 
-### Flores
+## Realizar Pruebas con Postman
 
-- **GET** Obtener todas las flores:
-  ```
-  GET http://localhost:5020/api/flower
-  ```
+Para realizar pruebas en Postman, sigue estos pasos:
 
-- **GET** Obtener una flor por ID:
-  ```
-  GET http://localhost:5020/api/flower/{id}
-  ```
+1. **Descarga e instala [Postman](https://www.postman.com/downloads/).
+2. Abre Postman y crea una nueva colección para organizar tus solicitudes.
+3. Configura las siguientes solicitudes:
 
-- **POST** Crear una nueva flor:
-  ```
-  POST http://localhost:5020/api/flower
-  ```
+### Crear un Usuario
 
-  **Body:**
-  ```json
-  {
-    "name": "Rose",
-    "description": "A beautiful red rose.",
-    "price": 5.99,
-    "quantityInStock": 100,
-    "imageUrl": "http://example.com/rose.jpg"
-  }
-  ```
+- **Método:** POST
+- **URL:** `http://localhost:5020/api/user`
+- **Body:**
+```json
+{
+  "name": "John Doe",
+  "email": "john.doe@example.com",
+  "storeIds": []
+}
+```
 
-- **PUT** Actualizar una flor existente:
-  ```
-  PUT http://localhost:5020/api/flower/{id}
-  ```
+### Actualizar un Usuario
 
-  **Body:**
-  ```json
-  {
-    "id": "66dbf736877a46984b6ed6c0",
-    "name": "Rose",
-    "description": "A beautiful red rose.",
-    "price": 5.99,
-    "quantityInStock": 50,
-    "imageUrl": "http://example.com/rose.jpg"
-  }
-  ```
+- **Método:** PUT
+- **URL:** `http://localhost:5020/api/user/{id}`
+- **Body:**
+```json
+{
+  "id": "66e401da595743eae277dbc9",
+  "name": "John Doe Updated",
+  "email": "john.doe.updated@example.com",
+  "storeIds": ["66e402ca595743eae277dbcf", "66e403ab595743eae277dbd0"]
+}
+```
 
-- **DELETE** Eliminar una flor:
-  ```
-  DELETE http://localhost:5020/api/flower/{id}
-  ```
+### Crear una Tienda
 
-### Pedidos
+- **Método:** POST
+- **URL:** `http://localhost:5020/api/store`
+- **Body:**
+```json
+{
+  "name": "Flower Shop",
+  "location": "123 Garden St, City, Country",
+  "userId": "66e401da595743eae277dbc9"
+}
+```
 
-- **GET** Obtener todos los pedidos:
-  ```
-  GET http://localhost:5020/api/order
-  ```
+### Actualizar una Tienda
 
-- **GET** Obtener un pedido por ID:
-  ```
-  GET http://localhost:5020/api/order/{id}
-  ```
+- **Método:** PUT
+- **URL:** `http://localhost:5020/api/store/{id}`
+- **Body:**
+```json
+{
+  "id": "66e402ca595743eae277dbcf",
+  "name": "Updated Flower Shop",
+  "location": "456 New Garden St, City, Country",
+  "userId": "66e401da595743eae277dbc9"
+}
+```
 
-- **POST** Crear un nuevo pedido:
-  ```
-  POST http://localhost:5020/api/order
-  ```
+### Crear un Empleado
 
-  **Body:**
-  ```json
-  {
-    "customerName": "John Doe",
-    "customerEmail": "john.doe@example.com",
-    "items": [
-      {
-        "flowerId": "66dbf736877a46984b6ed6c0",
-        "quantity": 2
-      }
-    ],
-    "totalAmount": 49.99,
-    "orderDate": "2024-09-10T14:30:00Z"
-  }
-  ```
+- **Método:** POST
+- **URL:** `http://localhost:5020/api/employee`
+- **Body:**
+```json
+{
+  "name": "Alice Johnson",
+  "position": "Sales Associate",
+  "storeId": "66e402ca595743eae277dbcf"
+}
+```
 
-- **PUT** Actualizar un pedido existente:
-  ```
-  PUT http://localhost:5020/api/order/{id}
-  ```
+### Actualizar un Empleado
 
-  **Body:**
-  ```json
-  {
-    "id": "66dbf736877a46984b6ed6c0",
-    "customerName": "John Doe",
-    "customerEmail": "john.doe@example.com",
-    "items": [
-      {
-        "flowerId": "66dbf736877a46984b6ed6c0",
-        "quantity": 2
-      }
-    ],
-    "totalAmount": 49.99,
-    "orderDate": "2024-09-10T14:30:00Z"
-  }
-  ```
+- **Método:** PUT
+- **URL:** `http://localhost:5020/api/employee/{id}`
+- **Body:**
+```json
+{
+  "id": "66e403ab595743eae277dbd0",
+  "name": "Alice Johnson Updated",
+  "position": "Senior Sales Associate",
+  "storeId": "66e402ca595743eae277dbcf"
+}
+```
 
-- **DELETE** Eliminar un pedido:
-  ```
-  DELETE http://localhost:5020/api/order/{id}
-  ```
-
-## Pruebas con Postman
-
-1. Importa el archivo `ApiHexagonalNet.postman_collection.json` en Postman.
-2. Ejecuta las solicitudes configuradas para probar cada uno de los endpoints.
+4. **Ejecuta las solicitudes** y verifica las respuestas de la API para asegurarte de que todo funciona correctamente.
 
 ## Contribuir
 
-Para contribuir al proyecto, realiza un fork del repositorio, crea una nueva rama y realiza un pull request con tus cambios.
+Si deseas contribuir a este proyecto, por favor crea un fork del repositorio, haz tus cambios, y envía un pull request. Agradecemos todas las contribuciones.
 
 ## Licencia
 
-Este proyecto está bajo la licencia MIT.
+Este proyecto está licenciado bajo los términos de la licencia MIT. Consulta el archivo LICENSE para más detalles.
