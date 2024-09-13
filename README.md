@@ -61,11 +61,13 @@ La API debería iniciarse y estar disponible en `http://localhost:5020` u otro p
 
 Para realizar pruebas en Postman, sigue estos pasos:
 
-1. **Descarga e instala [Postman](https://www.postman.com/downloads/).
+1. **Descarga e instala [Postman](https://www.postman.com/downloads/).**
 2. Abre Postman y crea una nueva colección para organizar tus solicitudes.
 3. Configura las siguientes solicitudes:
 
-### Crear un Usuario
+### Consultas para Postman
+
+#### 1. Crear un Usuario
 
 - **Método:** POST
 - **URL:** `http://localhost:5020/api/user`
@@ -78,7 +80,22 @@ Para realizar pruebas en Postman, sigue estos pasos:
 }
 ```
 
-### Actualizar un Usuario
+#### 2. Obtener Todos los Usuarios
+
+- **Método:** GET
+- **URL:** `http://localhost:5020/api/user`
+
+#### 3. Obtener un Usuario por ID
+
+- **Método:** GET
+- **URL:** `http://localhost:5020/api/user/{id}`
+
+#### 4. Obtener Tiendas de un Usuario
+
+- **Método:** GET
+- **URL:** `http://localhost:5020/api/user/{id}/stores`
+
+#### 5. Actualizar un Usuario
 
 - **Método:** PUT
 - **URL:** `http://localhost:5020/api/user/{id}`
@@ -92,7 +109,12 @@ Para realizar pruebas en Postman, sigue estos pasos:
 }
 ```
 
-### Crear una Tienda
+#### 6. Eliminar un Usuario
+
+- **Método:** DELETE
+- **URL:** `http://localhost:5020/api/user/{id}`
+
+#### 7. Crear una Tienda
 
 - **Método:** POST
 - **URL:** `http://localhost:5020/api/store`
@@ -105,7 +127,22 @@ Para realizar pruebas en Postman, sigue estos pasos:
 }
 ```
 
-### Actualizar una Tienda
+#### 8. Obtener Todas las Tiendas
+
+- **Método:** GET
+- **URL:** `http://localhost:5020/api/store`
+
+#### 9. Obtener una Tienda por ID
+
+- **Método:** GET
+- **URL:** `http://localhost:5020/api/store/{id}`
+
+#### 10. Obtener Empleados de una Tienda
+
+- **Método:** GET
+- **URL:** `http://localhost:5020/api/employee/store/{storeId}/employees`
+
+#### 11. Actualizar una Tienda
 
 - **Método:** PUT
 - **URL:** `http://localhost:5020/api/store/{id}`
@@ -119,7 +156,12 @@ Para realizar pruebas en Postman, sigue estos pasos:
 }
 ```
 
-### Crear un Empleado
+#### 12. Eliminar una Tienda
+
+- **Método:** DELETE
+- **URL:** `http://localhost:5020/api/store/{id}`
+
+#### 13. Crear un Empleado
 
 - **Método:** POST
 - **URL:** `http://localhost:5020/api/employee`
@@ -132,7 +174,17 @@ Para realizar pruebas en Postman, sigue estos pasos:
 }
 ```
 
-### Actualizar un Empleado
+#### 14. Obtener Todos los Empleados
+
+- **Método:** GET
+- **URL:** `http://localhost:5020/api/employee`
+
+#### 15. Obtener un Empleado por ID
+
+- **Método:** GET
+- **URL:** `http://localhost:5020/api/employee/{id}`
+
+#### 16. Actualizar un Empleado
 
 - **Método:** PUT
 - **URL:** `http://localhost:5020/api/employee/{id}`
@@ -145,6 +197,11 @@ Para realizar pruebas en Postman, sigue estos pasos:
   "storeId": "66e402ca595743eae277dbcf"
 }
 ```
+
+#### 17. Eliminar un Empleado
+
+- **Método:** DELETE
+- **URL:** `http://localhost:5020/api/employee/{id}`
 
 4. **Ejecuta las solicitudes** y verifica las respuestas de la API para asegurarte de que todo funciona correctamente.
 
